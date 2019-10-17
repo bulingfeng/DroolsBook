@@ -67,6 +67,4 @@ Drools规则引擎的中文书籍
  
  6. Global variables
  
- 7. attributes
- 
- [attributes语法](rule_attributes.md)
+ 7. [attributes语法点击查看](rule_attributes.md)
