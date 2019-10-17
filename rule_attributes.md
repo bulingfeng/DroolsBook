@@ -1,4 +1,4 @@
-### no-lop
+### 1、no-lop
 保证规则规则值执行一次。如果此时有人改变了fact的值，并且使用update,insert等操作可能出现死循环。
 ```drl
 rule "noloopTest-1"
@@ -21,10 +21,10 @@ end
 ```
 所以no-loop并不是一个严格意义上的只执行一次。严格执行一次的关键字为lock-on-active
 
-### salience
+### 2、salience
 定义规则的执行顺序的优先级。数字越大说明越先执行。默认值为1.Example: salience 10
 
-### enabled
+### 3、enabled
 当enabled为true时候，当规则满足条件会执行。放enabled为false则反之。
 ```drl
 rule "enabledTest-rule-1"
@@ -43,15 +43,15 @@ then
     System.out.println("enabled-rule-2 is running");
 end
 ```
-### date-effective
+### 4、date-effective
 时间的有效期开始时间。就是规则从这个时间点开始执行。这个时间点之前的规则不会执行。
 Example: date-effective "4-Sep-2018"
 
-### date-expires
+### 5、date-expires
 时间的过期时间，在这个是规则执行的最后日期。超越这个时间规则即使满足条件也不会执行。
 Example: date-expires "4-Oct-2018"
 
-### agenda-group
+### 6、agenda-group
 当指定agenda-group后,会匹配所配置的agenda-group名称。下面的代码只会执行agenda-group为
 agendaGroup-rule-1内的规则
 ```java
@@ -92,6 +92,6 @@ then
 end
 ```
 
-### activation-group
+### 7、activation-group
 该规则和agenda-group类似。activation-group内最多会执行一条规则。而agenda-group则是只要有匹配
 都会执行。
