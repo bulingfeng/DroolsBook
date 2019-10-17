@@ -62,3 +62,10 @@ Drools规则引擎的中文书籍
    ```
 
    Note:官方Person person = ( Person ) row.get( "person" );没有加$符号。必须保证别名的一致性。按照上述的是正确的代码。
+ 
+ 5. declare
+ 
+ 6. Global variables
+ 
+ 7. attributes
+ [attributes语法](rule_attributes.md)
