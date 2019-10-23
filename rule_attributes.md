@@ -95,3 +95,6 @@ end
 ### 7、activation-group
 该规则和agenda-group类似。activation-group内最多会执行一条规则。而agenda-group则是只要有匹配
 都会执行。
+
+### 8、duration
+表示规则持续时间。单位是milliseconds(毫秒值)

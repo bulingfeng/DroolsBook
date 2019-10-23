@@ -68,3 +68,50 @@ Drools规则引擎的中文书籍
  6. Global variables
  
  7. [attributes语法点击查看](rule_attributes.md)
+ 
+ 8. conditions
+ ### 注意事项
+    1. 如果javaBean中没有age这个属性，那么会调用getAge这个方法
+    
+    ```drl
+    Person( age == 50 )
+    
+    // This is the same as the following getter format:
+    
+    Person( getAge() == 50 )
+    
+    2. 和上面类似。下面是转换关系。
+    Person( address.houseNumber == 50 )
+    
+    // This is the same as the following format:
+    
+    Person( getAddress().getHouseNumber() == 50 )
+    
+    3. 如果age是number类型，但是比较的是string类型，会把string强制转换为number类型，如果转换失败则报错
+    rule "second-conditions-1"
+    when
+        $p:Person()
+    //    Person(age =="22")
+        Person(age ==22)
+    then
+        System.out.println("second-condition-1执行了"+$p.getName());
+    end
+    
+    4. 逗号, 和&&可以互相代替。但是不可以混合使用。
+    // 正确案例
+    Person( age > 50, weight > 80 )
+    Person( age > 50 && weight > 80 )
+    // 错误的案例
+    // Do not use the following format:
+    Person( ( age > 50, weight > 80 ) || height > 2 )
+    
+    // Use the following format instead:
+    Person( ( age > 50 && weight > 80 ) || height > 2 )
+    
+    5. 如果要给属性的某个值给赋值变量。采用下面的第二种方式。
+    // Do not use the following format:
+    Person( $age : age * 2 < 100 )
+    
+    // Use the following format instead:
+    Person( age * 2 < 100, $age : age )
+    ```
